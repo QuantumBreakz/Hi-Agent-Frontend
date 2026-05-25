@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HI Agent — Frontend Marketing & Widget
 
-## Getting Started
+This repository contains the client-side frontend for **HI Agent**, built using Next.js 14 (App Router) and Tailwind CSS. It functions as the premium marketing website, savings calculator, and hosts the live AI Voice Widget directly interacting with Vapi.ai.
 
-First, run the development server:
+## 🌟 Key Features
+1. **Interactive Voice Widget**: Uses the `@vapi-ai/web` SDK to allow visitors to call and speak with HI Agent directly in their browser.
+2. **Live Transcript UI**: A custom-designed scrollable widget tracking the Vapi call in real time.
+3. **Savings Calculator**: A dynamic component showing the explicit ROI of recovering missed calls.
+4. **Premium "Broccoli" Design**: Custom Tailwind v4 components implementing glassmorphism, floating elements, massive typography, and elegant hover states matching modern top-tier SaaS standards.
 
+---
+
+## 🚀 Deployment (Vercel)
+
+This frontend is designed to be easily deployed on [Vercel](https://vercel.com).
+
+1. Connect your GitHub repository (`QuantumBreakz/Hi-Agent-Frontend`) to Vercel.
+2. Vercel will automatically detect it as a Next.js project.
+3. You MUST provide the following Environment Variables in the Vercel dashboard:
+
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_VAPI_PUBLIC_KEY` | Your Public Key from the Vapi.ai dashboard |
+| `NEXT_PUBLIC_VAPI_ASSISTANT_ID` | The specific Assistant ID you configured on Vapi |
+| `NEXT_PUBLIC_API_URL` | The live URL of your Render backend (e.g. `https://hi-agent-backend.onrender.com`) |
+
+4. Hit Deploy! 
+
+---
+
+## 💻 Local Development
+
+To run this frontend on your local machine:
+
+1. In the `frontend` directory, ensure you have an `.env.local` file.
+2. Populate the `.env.local` file:
+   ```env
+   NEXT_PUBLIC_VAPI_PUBLIC_KEY=your_vapi_public_key
+   NEXT_PUBLIC_VAPI_ASSISTANT_ID=your_vapi_assistant_id
+   NEXT_PUBLIC_API_URL=http://localhost:3001
+   ```
+   *(Note: The `NEXT_PUBLIC_API_URL` points to your backend. During local dev, `localhost:3001` is correct assuming your backend is running.)*
+
+3. Install and run:
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+The site will spin up at `http://localhost:3000`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 File Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+frontend/
+├── app/
+│   ├── layout.tsx             # Global layout & metadata
+│   ├── page.tsx               # Main landing page (Hero, Cards, Voice Widget)
+│   ├── globals.css            # Custom Tailwind @utility classes & theme vars
+│   ├── savings-calculator/    # ROI Calculator page
+│   ├── faq/                   # Accordion FAQ page
+│   └── contact/               # Contact form page
+├── components/
+│   ├── VoiceWidget.tsx        # Vapi.ai Web SDK integration & UI
+│   ├── HeroSection.tsx        # Marketing hero with Mascot
+│   ├── NavBar.tsx             # Glassmorphic sticky header
+│   └── ...                    # (Footer, TradeGrid, ServicesCards, etc.)
+├── public/
+│   ├── hi-agent-logo.png      # Brand Logo
+│   └── hi-agent-mascot.png    # Brand Mascot
+└── tailwind.config.ts         # Configuration for Next.js (content paths)
+```
