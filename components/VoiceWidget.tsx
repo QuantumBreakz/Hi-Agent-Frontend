@@ -63,7 +63,7 @@ export function VoiceWidget() {
   const startCall = () => {
     const assistantId = process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID
     if (!vapiRef.current || !assistantId || assistantId.includes('<<')) {
-      setError('Add your Vapi keys to .env.local to enable live calls.')
+      setError('Please add your Vapi keys to your Vercel Project Environment Variables and redeploy.')
       return
     }
     setStatus('connecting')
@@ -163,10 +163,10 @@ export function VoiceWidget() {
                 Or call directly
               </p>
               <a
-                href="tel:+10000000000"
+                href="tel:+12164748167"
                 className="text-3xl font-extrabold text-teal-dark hover:text-teal-mid transition-colors"
               >
-                (XXX) XXX-XXXX
+                +1 (216) 474-8167
               </a>
             </div>
           </div>
