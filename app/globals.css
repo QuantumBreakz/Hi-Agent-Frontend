@@ -239,3 +239,12 @@ h1, h2, h3, h4 {
     background-color: rgb(209 213 219);
   }
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@utility animate-marquee {
+  animation: marquee 20s linear infinite;
+}
